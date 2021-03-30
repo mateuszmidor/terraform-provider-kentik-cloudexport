@@ -15,16 +15,34 @@ on:
     tags:
       - 'v*'
 jobs:
-  goreleaser:
+name: import-gpg
+
+on:
+  push:
+    branches: master
+
+jobs:
+  import-gpg:
     runs-on: ubuntu-latest
     steps:
       -
-        name: print secrets
+        name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v2
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      -
+        name: GPG user IDs
         run: |
-          echo GPG PRIV KEY
-          echo "here: ${{ secrets.GPG_PRIVATE_KEY }}"
-          echo PGP PASS
-          echo "here: ${{ secrets.PASSPHRASE }}"
+          echo "fingerprint: ${{ steps.import_gpg.outputs.fingerprint }}"
+          echo "keyid:       ${{ steps.import_gpg.outputs.keyid }}"
+          echo "name:        ${{ steps.import_gpg.outputs.name }}"
+          echo "email:       ${{ steps.import_gpg.outputs.email }}"
+
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
       -
         name: Checkout
         uses: actions/checkout@v2
