@@ -25,9 +25,9 @@ jobs:
     -
       name: print secrets
       run: |
-        echo "GPG PRIV KEY"
+        echo GPG PRIV KEY
         echo ${{ secrets.GPG_PRIVATE_KEY }}
-        echo "PGP PASS"
+        echo PGP PASS
         echo ${{ secrets.PASSPHRASE }}
 
     - name: Set up Go
