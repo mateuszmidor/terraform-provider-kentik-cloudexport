@@ -19,6 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: print secrets
+        run: |
+          echo GPG PRIV KEY
+          echo "here: ${{ secrets.GPG_PRIVATE_KEY }}"
+          echo PGP PASS
+          echo "here: ${{ secrets.PASSPHRASE }}"
+      -
         name: Checkout
         uses: actions/checkout@v2
       -

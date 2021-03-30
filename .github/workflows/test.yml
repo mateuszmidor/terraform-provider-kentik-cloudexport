@@ -22,13 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-    -
-      name: print secrets
-      run: |
-        echo GPG PRIV KEY
-        echo "here: ${{ secrets.GPG_PRIVATE_KEY }}"
-        echo PGP PASS
-        echo "here: ${{ secrets.PASSPHRASE }}"
 
     - name: Set up Go
       uses: actions/setup-go@v2.1.3
