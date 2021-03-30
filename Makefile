@@ -43,9 +43,10 @@ test:
 	sleep 1 # let the server some warm up time
 
 	# run tests; set KTAPI_URL to our local apiserver url - otherwise the provider will try to connect to live kentik server
-	echo $(TEST) | KTAPI_URL="http://${APISERVER_ADDR}" KTAPI_AUTH_EMAIL="dummy@acme.com" KTAPI_AUTH_TOKEN="dummy" xargs go test $(TESTARGS) -run="." -timeout=30s -parallel=4 -count=1 -v || pkill -f localhost_apiserver && exit 1
+	echo $(TEST) | KTAPI_URL="http://${APISERVER_ADDR}" KTAPI_AUTH_EMAIL="dummy@acme.com" KTAPI_AUTH_TOKEN="dummy" xargs go test $(TESTARGS) -run="." -timeout=30s -parallel=4 -count=1 -v \
+		|| (pkill -f localhost_apiserver && exit 1) # if error - stop local apiserver and exit with error
 	
-	# just stop the local apiserver
+	# if success - just stop the local apiserver
 	pkill -f localhost_apiserver
 
 testacc:
