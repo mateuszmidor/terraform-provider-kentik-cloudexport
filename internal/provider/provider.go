@@ -32,7 +32,7 @@ func New(version string) func() *schema.Provider {
 					Type:        schema.TypeString,
 					Optional:    true,
 					DefaultFunc: schema.EnvDefaultFunc("KTAPI_URL", nil),
-					Description: "Custom apiserver url can be specified either by apiurl attribute or KTAPI_URL environment variable",
+					Description: "Custom apiserver url can be specified either by apiurl attribute or KTAPI_URL environment variable. If not specified, default of https://cloudexports.api.kentik.com will be used",
 				},
 				"email": &schema.Schema{
 					Type:        schema.TypeString,
