@@ -32,20 +32,20 @@ func New(version string) func() *schema.Provider {
 					Type:        schema.TypeString,
 					Optional:    true,
 					DefaultFunc: schema.EnvDefaultFunc("KTAPI_URL", nil),
-					Description: "Custom apiserver url can be specified either by apiurl or KTAPI_URL environment variable",
+					Description: "Custom apiserver url can be specified either by apiurl attribute or KTAPI_URL environment variable",
 				},
 				"email": &schema.Schema{
 					Type:        schema.TypeString,
 					Required:    true,
 					DefaultFunc: schema.EnvDefaultFunc("KTAPI_AUTH_EMAIL", nil),
-					Description: "Authorization. Either email or KTAPI_AUTH_EMAIL environment variable is required",
+					Description: "Authorization. Either email attribute or KTAPI_AUTH_EMAIL environment variable is required",
 				},
 				"token": &schema.Schema{
 					Type:        schema.TypeString,
 					Sensitive:   true,
 					Required:    true,
 					DefaultFunc: schema.EnvDefaultFunc("KTAPI_AUTH_TOKEN", nil),
-					Description: "Authorization. Either token or KTAPI_AUTH_TOKEN  environment variable is required",
+					Description: "Authorization. Either token attribute or KTAPI_AUTH_TOKEN  environment variable is required",
 				},
 			},
 			DataSourcesMap: map[string]*schema.Resource{
