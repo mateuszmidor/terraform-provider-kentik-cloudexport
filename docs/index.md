@@ -26,6 +26,6 @@ provider "kentik-cloudexport" {
 
 ### Optional
 
-- **apiurl** (String) Custom apiserver url can be specified either by apiurl attribute or KTAPI_URL environment variable. If not specified, default of https://cloudexports.api.kentik.com will be used
+- **apiurl** (String) Custom apiserver url can be specified either by apiurl attribute or KTAPI_URL environment variable. If not specified, default of <https://cloudexports.api.kentik.com> will be used
 - **email** (String) Authorization. Either email attribute or KTAPI_AUTH_EMAIL environment variable is required
 - **token** (String, Sensitive) Authorization. Either token attribute or KTAPI_AUTH_TOKEN  environment variable is required
