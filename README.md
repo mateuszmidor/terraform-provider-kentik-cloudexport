@@ -1,5 +1,7 @@
 # Terraform Provider for Kentik Cloud Export
 
+This provider is published under <https://registry.terraform.io/providers/mateuszmidor/kentik-cloudexport/latest>
+
 ## Requirements
 
 - [Terraform](https://www.terraform.io/downloads.html) >= 0.14.x
